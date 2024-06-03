@@ -1,29 +1,23 @@
-// App.js
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CustomizedCard from "./Card"; 
 import Header from "./Header"; 
 import Footer from "./Footer";
 
 export function App() {
-  const [text, setText] = useState("");
-  const [count, setCount] = useState(0);
-  const LIST_ITEM = ["1", "2", "3", "4", "5", "6"];
-  const LIST_STATUS = ["DONE", "PENDING", "INPROGRESS", "CANCLE"];
-
-  // Set default text to Green on mount
-  useEffect(() => {
-    setText("DONE");
-  }, []);
-
-  // Log text when count changes
-  useEffect(() => {
-    console.log({ text });
-  }, [count]);
-
-  const randomText = () => {
-    const randomIndex = Math.floor(Math.random() * LIST_STATUS.length);
-    return LIST_STATUS[randomIndex];
-  };
+  const LIST_ITEM = [
+    { numberItem: "Item 1",
+      content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut optio eum ullam quae officia repellendus autem reprehenderit perferendis vero error.", statusItem: "DONE" },
+    { numberItem: "Item 2", 
+      content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut optio eum ullam quae officia repellendus autem reprehenderit perferendis vero error.", statusItem: "PENDING" },
+    { numberItem: "Item 3", 
+      content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut optio eum ullam quae officia repellendus autem reprehenderit perferendis vero error.", statusItem: "IN PROGRESS" },
+    { numberItem: "Item 4", 
+      content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut optio eum ullam quae officia repellendus autem reprehenderit perferendis vero error.", statusItem: "IN PROGRESS" },
+    { numberItem: "Item 5", 
+      content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut optio eum ullam quae officia repellendus autem reprehenderit perferendis vero error.", statusItem: "IN PROGRESS" },
+    { numberItem: "Item 6", 
+      content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut optio eum ullam quae officia repellendus autem reprehenderit perferendis vero error.",   statusItem: "CANCEL" }
+  ];
 
   return (
     <div
@@ -32,20 +26,13 @@ export function App() {
         flexDirection: "column",
         minHeight: "100vh",
         textAlign: "center",
+        padding: "10px"
       }}
     >
       <Header backgroundColor="#333" textColor="#fff"/>
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          justifyContent: "center",
-          gap: "10px",
-          paddingTop: "100px",
-        }}
-      >
-        {LIST_ITEM.map((number) => (
-          <CustomizedCard key={number} number={number} text={randomText()}/>
+      <div style={{ justifyContent: 'center', display: 'flex', flexWrap: 'wrap', marginTop: '80px'}}>
+        {LIST_ITEM.map((item, index) => (
+          <CustomizedCard key={index} numberItem={item.numberItem} content={item.content} statusItem={item.statusItem}/>
         ))}
       </div>
       <Footer backgroundColor="#333" textColor="#fff"/>

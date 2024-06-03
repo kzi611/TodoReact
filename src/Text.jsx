@@ -1,20 +1,20 @@
 import React from "react";
 
-const Text = ({ text, otherProps, ...rest }) => {
+const Text = ({ text }) => {
   const STYLE = {
-    DONE: {
-      backgroundColor:"#00FF00",
+    "DONE": {
+      backgroundColor: "#00FF00",
       color: "white",
     },
-    PENDING: {
+    "PENDING": {
       backgroundColor: "#FFFF00",
       color: "#333",
     },
-    INPROGRESS: {
+    "IN PROGRESS": {
       backgroundColor: "#0000FF",
       color: "white",
     },
-    CANCLE: {
+    "CANCEL": {
       backgroundColor: "#FF0000",
       color: "#333",
     },
@@ -22,11 +22,10 @@ const Text = ({ text, otherProps, ...rest }) => {
 
   return (
     <p
-      {...otherProps}
-      {...rest}
       style={{
-        backgroundColor: STYLE[text]?.backgroundColor,
-        color: STYLE[text]?.color,
+        ...STYLE[text],
+        margin: '5px 0',
+        width: '100%'
       }}
     >
       {text}
